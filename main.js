@@ -2,11 +2,11 @@ window.addEventListener("load", () => {
 
   // Define constants:
   const governorAlpha = "0xB3a87172F555ae2a2AB79Be60B336D2F7D0187f0";
-  const governorBeta = "0x8a907De47E00830a2b742db65e938a3ea1070A2E";
+  const governorBravo = "0x8a907De47E00830a2b742db65e938a3ea1070A2E";
   const poolToken = "0x0cEC1A9154Ff802e7934Fc916Ed7Ca50bDE6844e";
   
   const voteTopicAlpha = "0x877856338e13f63d0c36822ff0ef736b80934cd90574a3a5bc9262c39d217c46";
-  const voteTopicBeta = "0xb8e138887d0aa13bab447e82de9d5c1777041ecd21ca36ba824ff1e6c07ddda4";
+  const voteTopicBravo = "0xb8e138887d0aa13bab447e82de9d5c1777041ecd21ca36ba824ff1e6c07ddda4";
   const delegateTopic = "0x3134e8a2e6d97e929a7e54011ea5485d7d196dd5f0ba4d4ef95803e8e3fc257f";
 
   // Get elements:
@@ -88,8 +88,8 @@ window.addEventListener("load", () => {
           throw new Error(alphaRes);
         }
 
-        // Beta:
-        const betaRes = await fetch(rpc, {
+        // Bravo:
+        const bravoRes = await fetch(rpc, {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
@@ -102,20 +102,20 @@ window.addEventListener("load", () => {
               {
                 fromBlock: "earliest",
                 toBlock: "latest",
-                address: governorBeta,
-                topics: [voteTopicBeta]
+                address: governorBravo,
+                topics: [voteTopicBravo]
               }
             ]
           })
         });
-        if (betaRes.status !== 200) {
-          throw new Error(betaRes);
+        if (bravoRes.status !== 200) {
+          throw new Error(bravoRes);
         }
 
         const alphaBody = await alphaRes.json();
-        const betaBody = await betaRes.json();
+        const bravoBody = await bravoRes.json();
 
-        const voters = new Set(alphaBody.result.map(x => `0x${x.data.slice(26, 66)}`).concat(betaBody.result.map(x => `0x${x.topics[1].slice(-40)}`)));
+        const voters = new Set(alphaBody.result.map(x => `0x${x.data.slice(26, 66)}`).concat(bravoBody.result.map(x => `0x${x.topics[1].slice(-40)}`)));
         alert(`${voters.size} voters found!`);
         resultBox.innerHTML = [...voters].join("\n");
       }
