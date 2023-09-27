@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <title>PoolTogether Governance Participation</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <script src="./main.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <main>
+    <header>
+      <h1>PoolTogether</h1>
+      <h2>Governance Participation</h2>
+    </header>
+
+    <div id="inputs">
+      <input id="eth-rpc-input" type="text" name="eth-rpc" placeholder="Ethereum RPC URL" value="https://eth.llamarpc.com" required>
+      <select name="query-type" id="query-type-select" required>
+        <option value="voters">Voters</option>
+        <option value="delegators">Delegators</option>
+      </select>
+      <button id="query-btn">Query</button>
+    </div>
+
+    <textarea id="result-box" name="result" cols="30" rows="10">
+Provide an RPC and click "Query" ^
+    </textarea>
+
+    <footer>
+      made by <a href="https://trmid.eth.limo" target="_blank">trmid.eth</a>
+    </footer>
+  </main>
+</html>
