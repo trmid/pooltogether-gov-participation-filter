@@ -62,7 +62,7 @@ window.addEventListener("load", () => {
         const body = await res.json();
         const delegators = new Set(body.result.map(x => `0x${x.topics[1].slice(-40)}`));
         alert(`${delegators.size} delegators found!`);
-        resultBox.innerHTML = [...delegators].join(",\n");
+        resultBox.innerHTML = [...delegators].join("\n");
       } else if (queryType === "voters") {
         // Alpha:
         const alphaRes = await fetch(rpc, {
@@ -117,7 +117,7 @@ window.addEventListener("load", () => {
 
         const voters = new Set(alphaBody.result.map(x => `0x${x.data.slice(26, 66)}`).concat(betaBody.result.map(x => `0x${x.topics[1].slice(-40)}`)));
         alert(`${voters.size} voters found!`);
-        resultBox.innerHTML = [...voters].join(",\n");
+        resultBox.innerHTML = [...voters].join("\n");
       }
     } catch(err) {
       console.error(err);
